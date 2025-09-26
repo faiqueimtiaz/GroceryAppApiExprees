@@ -1,10 +1,10 @@
 import { configDotenv } from "dotenv";
 import express from "express";
 import pool from "../config/db.js";
-import { createBasketTable } from "../data/createBasketTable.js";
-import userRoutes from "../routes/userRoutes.js";
-import basketRouters from "../routes/basketRoutes.js";
-import createUserTable from "../data/createUserTable.js";
+import { createBasketTable } from "../src/data/createBasketTable.js";
+import userRoutes from "../src/routes/userRoutes.js";
+import basketRouters from "../src/routes/basketRoutes.js";
+import createUserTable from "../src/data/createUserTable.js";
 
 configDotenv();
 
