@@ -5,6 +5,7 @@ import {
   getBasketItemByid_service,
   deleteBasketItemById_service,
   updateBasketItemById_service,
+  updatePurchasedBasketItemById_service
 } from "../services/basketService.js";
 
 const handleResponse = (res, status, msg, data = null) => {
@@ -53,5 +54,15 @@ export const updateBasketItemById_Controller = async (req, res) => {
     handleResponse(res, 404, "No record found.", data);
   } else {
     handleResponse(res, 201, "item updated successfully.", data);
+  }
+};
+
+export const updatePurchasedBasketItemById_Controller = async (req, res) => {
+  const data = await updatePurchasedBasketItemById_service(req.params.id);
+
+  if (data === null) {
+    handleResponse(res, 404, "No record found.", data);
+  } else {
+    handleResponse(res, 201, "item purchased updated successfully.", data);
   }
 };

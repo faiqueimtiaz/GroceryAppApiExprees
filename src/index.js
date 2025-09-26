@@ -5,6 +5,7 @@ import { createBasketTable } from "../src/data/createBasketTable.js";
 import userRoutes from "../src/routes/userRoutes.js";
 import basketRouters from "../src/routes/basketRoutes.js";
 import createUserTable from "../src/data/createUserTable.js";
+import addColumnBasketTable from "./data/addColumnBasketTable.js";
 
 configDotenv();
 
@@ -13,8 +14,10 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-// createBasketTable();
+createBasketTable();
 createUserTable();
+
+addColumnBasketTable();
 
 app.use("/api", basketRouters);
 

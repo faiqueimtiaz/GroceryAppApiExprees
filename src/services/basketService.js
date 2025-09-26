@@ -97,3 +97,27 @@ export const updateBasketItemById_service = async (id, body) => {
     client.release();
   }
 };
+
+export const updatePurchasedBasketItemById_service = async (id) => {
+  const client = await pool.connect();
+  try {
+    const itemPurchased = true;
+
+    const result = await client.query(
+      "UPDATE basket SET is_purchased = $1  WHERE id = $2 RETURNING *",
+      [itemPurchased, id]
+    );
+    // return result;
+    // return result.rowCount;
+    if (result.rowCount > 0) {
+      return result.rows[0];
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    throw error;
+  } finally {
+    client.release();
+  }
+};
